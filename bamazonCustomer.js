@@ -58,8 +58,6 @@ var start = function() {
 
 var seeInventory = function () {
     connection.query("SELECT item_id, product_name, price FROM products WHERE stock_quantity > 0", function (err, res, fields) {
-        //console.log(res);
-        //console.log(err);
         var table = new Table({
             head: ['ID', 'Product Name', 'Price']
         });
@@ -72,6 +70,29 @@ var seeInventory = function () {
         console.log("---------------------------------------");        
     });
 };
+
+var itemsLeft = function (res) {
+    inquirer.prompt ([{
+        type: 'input',
+        name: 'itemId',
+        message: 'Enter the item ID of the product you would like to purchase.'
+    },
+    {
+        type: 'input',
+        name: 'choice',
+        message: 'How many would you like to purchase?'
+    }
+    ]).then(function(answers){
+        for(var i=0; i<res.length; i++){
+            if (res[i].product_name==answers.choice){
+                correct=true;
+                var product=answers.choice;
+                var id=i;
+            }
+        }
+
+    })
+}
 
 // start function to allow customer to purchase a product from item list
 start();
