@@ -1,3 +1,15 @@
+-- Created a Table inside of bamazon_db called products.
+-- The products table contains the following columns:
+-- item_id (unique id for each product)
+-- product_name (Name of product)
+-- department_name
+-- price (cost to customer)
+-- stock_quantity (how much of the product is available in stores)
+
+-- First display all of the items available for sale.
+-- Include the ids, names, and prices of products for sale.
+
+
 DROP DATABASE IF EXISTS bamazon_db;
 
 CREATE DATABASE bamazon_db;

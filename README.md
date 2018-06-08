@@ -16,3 +16,7 @@ https://www.npmjs.com/package/mysql
 ### Chalk
 Terminal string styling done right.
 https://www.npmjs.com/package/chalk 
+
+### Figlet
+Aims to fully implement the FIGfont spec in JavaScript.
+https://www.npmjs.com/package/figlet 
