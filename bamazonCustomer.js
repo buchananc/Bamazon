@@ -130,5 +130,23 @@ function exitProgram() {
 ///////////////////////////////END OF ITEMS DISPLAYED/////////////////////////////////
 
 
+///////////////////////////////VIEW LOW INVENTORY////////////////////////////////////
+// function lowInventory() {
+//     connection.query("SELECT products WHERE stock_quantity < 5", function(error, results) {
+//         var table = new Table({
+//             head: ['ID', 'Product Name', 'Price', 'Department', 'Quantity']
+//         });
+//         console.log("THESE ARE THE REMAINING ITEMS FOR SALE THAT ARE LOW INVENTORY: ");
+//         console.log("===========================================================");
+//         for(var i = 0; i<res.length; i++) {
+//         table.push([res[i].item_id, res[i].product_name, res[i].price, res[i].department_name, res[i].stock_quantity]);
+//     }
+//     console.log(table.toString());
+//     console.log("----------------------------------------------------------");
+//     menu();
+//     });
+// }
+///////////////////////////////END OF LOW INVENTORY////////////////////////////////////
+
 // This means updating the SQL database to reflect the remaining quantity.
 // Once the update goes through, show the customer the total cost of their purchase.
