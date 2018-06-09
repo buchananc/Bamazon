@@ -13,12 +13,22 @@ They are all dependencies in the [package.json](https://github.com/buchananc/Bam
 ___
 
 ## Customer Module
+# Start
+
 To run this module in the terminal:
 
 ```node bamazonCustomer.js```
+![start](https://user-images.githubusercontent.com/35079979/41186587-e8fb95ce-6b66-11e8-8ca8-7a5bbe636493.png)
 
-The customer module lets users select a product to purchase, enter the number of items they wish to purchase, and then complete the purchase.
+# Menu
+![menu](https://user-images.githubusercontent.com/35079979/41186591-0e5cecdc-6b67-11e8-9158-2d96aea3bb10.png)
+1. The customer module lets users select a product to purchase.
+![list](https://user-images.githubusercontent.com/35079979/41186609-6cce842e-6b67-11e8-8910-c2fc6d673b8f.png)
+2. Enter the number of items they wish to purchase. 
+
+3. Complete the purchase.
 
 The complete purchase process shows how much the total cost is (based on number of items).
-
+![transaction](https://user-images.githubusercontent.com/35079979/41186611-7614ce30-6b67-11e8-9d45-a7474d4a79bc.png)
 The customer module also updates to the total sales for a department, based on the purchased product's department.
+![updatedtable](https://user-images.githubusercontent.com/35079979/41186625-96f0035e-6b67-11e8-815a-934e9c259a12.png)
