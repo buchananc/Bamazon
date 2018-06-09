@@ -14,7 +14,7 @@ var connection = mysql.createConnection({
     password: process.env.password,
     database: "bamazon_db"
 });
-
+bamazonReady();
 connection.connect();
 
 
@@ -32,8 +32,8 @@ function bamazonReady() {
             return;
         }
         console.log(data);
+        menu();
     });
-    //menu();
 }
 ///////////////////////////////END OF BAMAZON HEADER//////////////////////////////////
 
@@ -46,7 +46,7 @@ function menu() {
             name: "action",
             type: "list",
             message: "WELCOME TO BAMAZON! WHAT WOULD YOU LIKE TO DO?",
-            choices: ["View available products", "View low inventory", "Add to inventory", "Add a new product", "Exit"]
+            choices: ["View available products", "Exit"]
         }])
         .then(function (answer) {
             switch (answer.action) {
@@ -94,7 +94,7 @@ var seeInventory = function () {
                 message: "How many of this item would you like to purchase: "
             }
         ]).then(function (answers) {
-            connection.query("SELECT * FROM products WHERE item_id - " + answers.item_id, function (error, results) {
+            connection.query("SELECT * FROM products WHERE item_id = " + answers.item_id, function (error, results) {
                 try {
                     let currentPrice = results[0].price;
                     var total = (answers.quantity * currentPrice).toFixed(2);
@@ -104,15 +104,16 @@ var seeInventory = function () {
                         console.log("Insufficient quantity!");
                         seeInventory();
                     } else {
-                        connection.query("UPDATE products SET stock_quantity - " + answers.quantity + "WHERE item_id - " + answers.item_id, function (error, results) {
+                        connection.query("UPDATE products SET stock_quantity - " + answers.quantity + "WHERE item_id = " + answers.item_id, function (error, results) {
                             console.log("Inventory Update!");
                             console.log("Your total is: $" + total);
                             console.log("Thank you for shopping at Bamazon!");
-                        });
-                        connection.query("UPDATE departmentsINNER JOIN products ON products.department_name - department.department_name SET departments.product_sales - department.product_sales + ? WHERE products.item_id", function (error, results) {
-                            console.log("Department updated!");
                             exitProgram();
                         });
+                        // connection.query("UPDATE departments INNER JOIN products ON products.department_name - department.department_name SET departments.product_sales - department.product_sales + ? WHERE products.item_id", function (error, results) {
+                        //     console.log("Department updated!");
+                        //     exitProgram();
+                        // });
                     }
                 } catch (e) {
                     console.log("There was an error with your Bamazon request: " + e.message);
@@ -128,24 +129,6 @@ function exitProgram() {
 }
 ///////////////////////////////END OF ITEMS DISPLAYED/////////////////////////////////
 
-
-///////////////////////////////VIEW LOW INVENTORY////////////////////////////////////
-// function lowInventory() {
-//     connection.query("SELECT products WHERE stock_quantity < 5", function(error, results) {
-//         var table = new Table({
-//             head: ['ID', 'Product Name', 'Price', 'Department', 'Quantity']
-//         });
-//         console.log("THESE ARE THE REMAINING ITEMS FOR SALE THAT ARE LOW INVENTORY: ");
-//         console.log("===========================================================");
-//         for(var i = 0; i<res.length; i++) {
-//         table.push([res[i].item_id, res[i].product_name, res[i].price, res[i].department_name, res[i].stock_quantity]);
-//     }
-//     console.log(table.toString());
-//     console.log("----------------------------------------------------------");
-//     menu();
-//     });
-// }
-///////////////////////////////END OF LOW INVENTORY////////////////////////////////////
 
 // This means updating the SQL database to reflect the remaining quantity.
 // Once the update goes through, show the customer the total cost of their purchase.
