@@ -1,7 +1,5 @@
 # **Bamazon**
-Bamazon, like its name, is a simple e-commerce app, or at least the backend for it. Check out this screencast on youtube to see how it works: bamazon on youtube.
-
-Bamazon uses some third-party node modules, has it's own modules, and connects to a mysql database to store and retrieve product and department information.
+Bamazon, like its name, is a simple e-commerce app, or at least the backend for it. Bamazon uses some third-party node modules, has it's own modules, and connects to a mysql database to store and retrieve product and department information.
 
 ___
 ## Third-party Node Modules
